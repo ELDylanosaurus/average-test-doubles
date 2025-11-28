@@ -3,7 +3,7 @@ import { Average } from "./average.ts"
 import { FakeNumberSource } from "./fake_number_source.ts"
 
 Deno.test("Average mit FakeNumberSource berechnet korrektes mean", async () => {
-  const path = "/path/to/some/other/file"
+  const path = "/1-to10.txt"
   const fake = new FakeNumberSource(path)
   fake.addFile(path, [1, 2, 3, 4, 5])
 
