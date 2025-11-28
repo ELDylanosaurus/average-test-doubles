@@ -1,0 +1,10 @@
+{
+  "test": {
+    "testDir": "tests",
+    "permissions": {
+      "read": true,
+      "write": true,
+      "net": true
+    }
+  }
+}

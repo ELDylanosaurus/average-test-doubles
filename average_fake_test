@@ -1,0 +1,15 @@
+import { expect } from "@std/expect"
+import { Average } from "./average.ts"
+import { FakeNumberSource } from "./fake_number_source.ts"
+
+Deno.test("Average mit FakeNumberSource berechnet korrektes mean", async () => {
+  const path = "/path/to/some/other/file"
+  const fake = new FakeNumberSource(path)
+  fake.addFile(path, [1, 2, 3, 4, 5])
+
+  const average = new Average(fake)
+
+  const result = await average.computeMeanOfFile()
+
+  expect(result).toBe(3)
+})

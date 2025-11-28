@@ -1,21 +1,21 @@
-import { FileAccess } from "./file_access.ts";
-import { mean, median, mode } from "./statistics.ts";
+import { INumberSource } from "./INumberSource.ts"
+import { mean, median, mode } from "./statistics.ts"
 
 export class Average {
-  constructor(private fileAccess: FileAccess) {}
+  constructor(private numberSource: INumberSource) {}
 
   public async computeMeanOfFile(): Promise<number> {
-    const numbers: Array<number> = await this.fileAccess.readNumbers();
-    return mean(numbers);
+    const numbers = await this.numberSource.readNumbers()
+    return mean(numbers)
   }
 
   public async computeMedianOfFile(): Promise<number> {
-    const numbers: Array<number> = await this.fileAccess.readNumbers();
-    return median(numbers);
+    const numbers = await this.numberSource.readNumbers()
+    return median(numbers)
   }
 
-  public async computeModeOfFile(): Promise<Array<number>> {
-    const numbers: Array<number> = await this.fileAccess.readNumbers();
-    return mode(numbers);
+  public async computeModeOfFile(): Promise<number[]> {
+    const numbers = await this.numberSource.readNumbers()
+    return mode(numbers)
   }
 }
